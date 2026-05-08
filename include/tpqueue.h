@@ -21,8 +21,9 @@ class TPQueue {
             delete head;
             head = next;
             return temp;
-        } else
+        } else {
             return T();
+        }
     }
 
     void push(T data) {
@@ -39,8 +40,9 @@ class TPQueue {
                 newNode->next = temp->next;
                 temp->next = newNode;
             }
-        } else
+        } else {
             head = create(data);
+        }
     }
 
  private:
