@@ -4,7 +4,7 @@
 
 template<typename T>
 class TPQueue {
-public:
+ public:
     TPQueue() :head(nullptr) {}
     ~TPQueue() {
         while (head) {
@@ -21,7 +21,8 @@ public:
             delete head;
             head = next;
             return temp;
-        } else
+        }
+        else
             return T();
     }
 
@@ -32,16 +33,19 @@ public:
                 head = create(data);
                 head->next = temp;
             } else {
-                while (data.prior <= temp->data.prior && (temp->next != nullptr))
+                while ((temp->next != nullptr)
+                    &&data.prior <= temp->next->data.prior)
                     temp = temp->next;
                 Node* newNode = create(data);
                 newNode->next = temp->next;
                 temp->next = newNode;
             }
-        } else
+        }
+        else
             head = create(data);
     }
-private:
+
+ private:
     struct Node {
         T data;
         Node* next;
